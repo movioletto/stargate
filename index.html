@@ -1,0 +1,125 @@
+<SCRIPT type="text/javascript">
+	var cartella = "";   //CARTELLA DELLE IMMAGINI
+	var estensione = "png";  //ESTENZIONI DELLE IMMAGINI
+	var ws_images;
+	var ws_load;
+	var idx;
+	var num;
+	var period;
+	var running;
+	var extension;
+	var stringa="";
+	var codici = new Array("706", "168", "950", "351", "689");
+	var lettere;
+	
+	function carica()
+	{
+		lettere = new Array();
+		for(i=0;i<12;i++)
+		{
+			lettere[i] = new Image();
+			lettere[i].src = "simboli/"+i+".png";
+		}
+	}
+	
+	function aggiungi(i)
+	{
+		if(i==10 || i==11)
+		{
+			if(i==10)
+				verifica();
+			else
+				cancella();
+		}
+		else
+		{
+			if(stringa.length<3)
+			{
+				switch(stringa.length)
+				{
+					case 0:
+						document.images.n1.src=lettere[i].src;
+						break;
+					case 1:
+						document.images.n2.src=lettere[i].src;
+						break;
+					case 2:
+						document.images.n3.src=lettere[i].src;
+						break;
+				}
+				stringa+=i;
+			}
+		}
+	}
+	
+	function cancella()
+	{
+		document.images.n1.src=lettere[10].src;
+		document.images.n2.src=lettere[10].src;
+		document.images.n3.src=lettere[10].src;
+		stringa="";
+		document.getElementsByTagName("div").item(0).innerHTML="<embed width=\"700\" height=\"400\" src=\"videoDefault.swf\">";
+	}
+	
+	function verifica()
+	{
+		if(stringa==codici[0])
+			document.getElementsByTagName("div").item(0).innerHTML="<embed width=\"700\" height=\"400\" src=\"video/1.swf\">";
+		else if(stringa==codici[1])
+			document.getElementsByTagName("div").item(0).innerHTML="<embed width=\"700\" height=\"400\" src=\"video/2.swf\">";
+		else if(stringa==codici[2])
+			document.getElementsByTagName("div").item(0).innerHTML="<embed width=\"700\" height=\"400\" src=\"video/3.swf\">";
+		else if(stringa==codici[3])
+			document.getElementsByTagName("div").item(0).innerHTML="<embed width=\"700\" height=\"400\" src=\"video/4.swf\">";
+		else if(stringa==codici[4])
+			document.getElementsByTagName("div").item(0).innerHTML="<embed width=\"700\" height=\"400\" src=\"video/5.swf\">";
+		else
+			cancella();
+	}
+</SCRIPT>
+<body onload="carica();" bgcolor="grey">
+<table width="100%" height="700">
+	<tr height=450>
+		<td width="40%">
+		<center>
+			<map id="stargate" name="stargate">
+				<area shape="rect" alt="0" title="" coords="0, 0, 99, 99" href="javascript:aggiungi('0')" target="" />
+				<area shape="rect" alt="1" title="" coords="100, 0, 199, 99" href="javascript:aggiungi(1)" target="" />
+				<area shape="rect" alt="2" title="" coords="200, 0, 299, 99" href="javascript:aggiungi('2')" target="" />
+				<area shape="rect" alt="3" title="" coords="0, 100, 99, 199" href="javascript:aggiungi('3')" target="" />
+				<area shape="rect" alt="4" title="" coords="100, 100, 199, 199" href="javascript:aggiungi('4')" target="" />
+				<area shape="rect" alt="5" title="" coords="200, 100, 299, 199" href="javascript:aggiungi('5')" target="" />
+				<area shape="rect" alt="6" title="" coords="0, 200, 99, 299" href="javascript:aggiungi('6')" target="" />
+				<area shape="rect" alt="7" title="" coords="100, 200, 199, 299" href="javascript:aggiungi('7')" target="" />
+				<area shape="rect" alt="8" title="" coords="200, 200, 299, 299" href="javascript:aggiungi('8')" target="" />
+				<area shape="rect" alt="10" title="" coords="0, 300, 99, 399" href="javascript:aggiungi('10')" target="" />
+				<area shape="rect" alt="9" title="" coords="100, 300, 199, 399" href="javascript:aggiungi('9')" target="" />
+				<area shape="rect" alt="11" title="" coords="200, 300, 299, 399" href="javascript:aggiungi('11')" target="" />
+			</map>
+			<img name="stargate" src="tastiera.png" usemap="#stargate">
+		</center>
+		</td>
+		<td width="60%">
+			<center>
+			<div name='video1'><embed width="700" height="400" src="videoDefault.swf"></div><!-- width="700" height="400"-->
+			</center>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<center>
+				<table style="border:0px solid black;border-spacing:0px;">
+					<tr style="border:0px solid black;border-spacing:0px;">
+						<td style="border:0px solid black;border-spacing:0px;"><!-- width="64" height="61"--><img src="simboli/10.png" name="n1" style=""></td>
+						<td style="border:0px solid black;border-spacing:0px;"><!-- width="64" height="61"--><img src="simboli/10.png" name="n2"></td>
+						<td style="border:0px solid black;border-spacing:0px;"><!-- width="64" height="61"--><img src="simboli/10.png" name="n3"></td>
+					</tr>
+				</table>
+			</center>
+		</td>
+	</tr>
+</table>
+
+
+
+<!--<embed width="400" height="200" src="GravityBall3.swf">-->
